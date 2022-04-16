@@ -1,0 +1,138 @@
+let mapleader = " "
+namp <space> <Leader>
+nmap <Leader>so :source C:\使用者\a0909\_ideavimrc
+
+"------ 套件配置 ------
+set easymotion
+set surround
+set multiple-cursors
+
+"------ 環境功能配置 ------
+
+"顯示相對座標
+set number relativenumber
+" 關閉錯誤音效
+set visualbell
+set noerrorbells
+"支援 256 色
+set t_Co=256
+"搜尋，高亮標註
+set hlsearch
+"開啟增量搜尋模式,隨著鍵入即時搜尋
+set incsearch
+" 搜尋時忽略大小寫
+set ignorecase
+set history=100000
+" 縮排ts = tabstop
+set ts=4 "縮排 4 格
+" tab 替換成空格
+set expandtab
+" 複製到系統剪貼簿內
+set clipboard+=unnamed
+" 自動縮排 ｜ autoindent / smartindent / cindent
+" 跟上一行的縮進一致
+" set autoindent 
+"顯示命令
+set showmode
+
+" ------  快捷鍵配置 ------
+" 設定方式
+" n<vim模式>  nore<設定是否遞迴式延伸>map {要設定案鍵} {執行命令或動作}
+" --------- Normal Mode ------------
+
+" 關閉上方檔案標籤
+nmap tx :action CloseContent<cr>
+nmap tX :action ReopenClosedTab<cr>
+" 新增標籤
+nmap <Leader>m :action ToggleBookmark<cr>
+" 移動道上一個標籤
+nmap `n :action GotoNextBookmark<cr>
+" 移動道下一個標籤
+nmap `p :action GotoPreviousBookmark<cr>
+" 搜尋
+nmap <leader>/ :action Find<cr>
+" 替換游標下字元並進入 insert
+nmap <leader>s s
+" 游標快速移動左右視窗
+" h left, l right, k up, j down
+nmap <leader>h <c-w>h
+nmap <leader>l <c-w>l
+
+" --------- Normal Mode (Non Recursive)------------
+
+"清除高亮搜尋
+nnoremap <Leader>n :nohlsearch<cr>
+"向上10行
+nnoremap <Leader>j 20j
+"向上10行
+nnoremap <Leader>k 20k
+" 游標跳至行首
+nnoremap H ^
+" 游標跳至行尾
+nnoremap L $
+" 上方tab回下一個標籤
+nnoremap tn gt
+" 上方tab回上一個標籤
+nnoremap tp gT
+" 移動tab
+nmap <C-w>tl :action MoveTabRight<cr>
+" 複製目前單字到寄存器
+nnoremap yiw mo"+yiw"ayiw
+" 跳轉到定義
+nnoremap gd :action GotoDeclaration<cr>
+" 跳轉到變數的宣告
+nnoremap gS :action GotoSymbol<CR>
+" 跳轉到變數的宣告
+nnoremap gd :action GotoDeclaration<cr>
+" 刪除游標行並新增一行
+nnoremap cc ddO
+" 向上新增一行
+nnoremap <Leader>o o<ESC>
+" 向下新增一行
+nnoremap <Leader>O O<ESC>
+" 向上貼上一行
+nnoremap <Leader>p o<C-r>\<ESC>
+" 向下貼上一行
+nnoremap <Leader>P O<C-r>\<ESC>
+" 貼上系統剪貼簿內容
+nnoremap <Leader><Leader>p :action $Paste<cr>
+" format code
+" nnoremap <Shift><A-f> :action ReformatCode<CR><esc>
+" Undo
+nnoremap <C-z> :action $Undo<cr>
+" Redo
+nnoremap <C-y> :action $Redo<cr>
+
+" --------- Visual Mode ------------
+
+
+" --------- Visual Mode (Non Recursive)------------
+
+" 游標跳至行首
+vnoremap H ^
+" 游標跳至行尾
+vnoremap L $
+" 複製到系統剪貼簿內容
+vnoremap Y y<ESC>
+" 複製到系統剪貼簿內容
+vnoremap <Leader><Leader>p :action $Paste<cr>
+" 貼上剪貼簿內容
+vnoremap p pgvy
+
+" --------- Insert Mode ------------
+
+" 離開 insert mode
+imap jj <ESC>
+
+" --------- Insert Mode (Non Recursive) ------------
+
+
+" --------- Java ------------
+" 跳轉到繼承方法
+noremap <C-u> :action GotoSuperMethod<CR>
+" 跳轉到複寫方法
+noremap <C-o> :action OverrideMethods<CR>
+" 跳轉到執行實體
+noremap <Leader>i :action ImplementMethods<CR>
+" 跳轉到執行實體
+noremap <Leader>h :action TypeHierarchy<CR>
